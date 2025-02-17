@@ -33,6 +33,7 @@ echo "--------------------------------------------"
 
 check_submissions $submissions_file
 EOL
+chmod +x app/reminder.sh
 
 # Populate functions.sh
 cat <<EOL > "modules/functions.sh"
@@ -57,6 +58,7 @@ function check_submissions {
     done < <(tail -n +2 "$submissions_file") # Skip the header
 }
 EOL
+chmod +x modules/functions.sh
 
 # Populate submissions.txt with sample records
 cat <<EOL > "assets/submissions.txt"
@@ -67,4 +69,16 @@ Divine, Shell Navigation, not submitted
 Anissa, Shell Basics, submitted
 EOL
 
+# Create the startup.sh script
+cat <<EOL > "startup.sh"
+echo "Starting up the App ........."
+source config/config.env
+./modules/functions.sh
+./app/reminder.sh
+EOL
+chmod +x startup.sh
 
+cd ..
+tree
+
+echo "It works"
