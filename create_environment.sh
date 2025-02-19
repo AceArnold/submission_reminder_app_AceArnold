@@ -68,6 +68,14 @@ Chinemerem, Shell Navigation, not submitted
 Chiagoziem, Git, submitted
 Divine, Shell Navigation, not submitted
 Anissa, Shell Basics, submitted
+John, Shell Navigation, not submitted
+Jack, Git, submitted
+David, Shell Navigation, not submitted
+Aurther, Shell Basics, submitted
+Mary, Shell Navigation, not submitted
+Chia, Git, submitted
+kevin, Shell Navigation, not submitted
+Lee, Shell Basics, submitted
 EOL
 
 # Create the startup.sh script
