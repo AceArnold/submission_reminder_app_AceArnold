@@ -14,7 +14,7 @@ cat <<EOL > "config/config.env"
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
 EOL
-chmod +x config.env
+chmod +x config/config.env
 
 # Populate reminder.sh
 cat <<EOL > "app/reminder.sh"
