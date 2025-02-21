@@ -34,6 +34,6 @@ First and foremost you will first launch the create environment.sh file which wi
 You will then proceed to change your directory to the **submission_reminder_{entered name}** and then proceed to launch the startup.sh script this will prompt the application to run
 
 
-##THANK YOU 
+## THANK YOU 
 
 
