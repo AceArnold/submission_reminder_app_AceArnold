@@ -41,7 +41,7 @@ You will then proceed to change your directory to the **submission_reminder_{ent
 #### STEP 3:
 proceed to launch the startup.sh script this will prompt the application to run
 
-#### THAT IS HOW YOU RUN THE UP 
+#### THAT IS HOW YOU RUN THE APP
 
 
 ## THANK YOU 
