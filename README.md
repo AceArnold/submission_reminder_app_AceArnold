@@ -30,8 +30,18 @@ I also then proceeded to use the tree command such that when you launch the crea
 
 
 ### HOW THE CODE WILL WORK
+
+#### STEP 1: 
 First and foremost you will first launch the create environment.sh file which will then create the necessary directories and subdirectories as well as the files that will be necessary in operating the app altogether
-You will then proceed to change your directory to the **submission_reminder_{entered name}** and then proceed to launch the startup.sh script this will prompt the application to run
+
+
+#### STEP 2:
+You will then proceed to change your directory to the **submission_reminder_{entered name}** 
+
+####STEP 3:
+proceed to launch the startup.sh script this will prompt the application to run
+
+#### THAT IS HOW YOU RUN THE UP 
 
 
 ## THANK YOU 
