@@ -38,7 +38,7 @@ First and foremost you will first launch the create environment.sh file which wi
 #### STEP 2:
 You will then proceed to change your directory to the **submission_reminder_{entered name}** 
 
-####STEP 3:
+#### STEP 3:
 proceed to launch the startup.sh script this will prompt the application to run
 
 #### THAT IS HOW YOU RUN THE UP 
