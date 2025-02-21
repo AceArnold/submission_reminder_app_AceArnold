@@ -1,44 +1,57 @@
 #!/bin/bash
-#This script will create a directory called submission_reminder_$ai. The $a represents your names 
-read -p "Enter Your Name:" a
-mkdir submission_reminder_$a
 
-#Once the directory is created the following subdirectories and files will be inside it
-cd submission_reminder_$a
-mkdir $b/app $b/modules $b/assets $b/config
-touch startup.sh
+# I'm creating a script that Script to ask for name
+read -p "Enter your name: " x
 
-# Populate config.env
-cat <<EOL > "$b/config/config.env"
+# Creating a variable "y" that I then use to define the main directory
+y="submission_reminder_${x}"
+
+# I am now creating all the respective sub-directorys
+mkdir -p "$y/config"
+mkdir -p "$y/modules"
+mkdir -p "$y/app"
+mkdir -p "$y/assets"
+
+# I am now creating the necessary files inside the previously made subdirectories
+touch "$y/config/config.env"
+touch "$y/assets/submissions.txt"
+touch "$y/app/reminder.sh"
+touch "$y/modules/functions.sh"
+touch "$y/startup.sh"
+
+
+# Populating config.env with downloaded content
+cat << EOF > "$y/config/config.env"
 # This is the config file
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
+EOF
 
-EOL
-chmod +x $b/config/config.env
+# Populating submissions.txt with a sample of students 
+cat << EOF > "$y/assets/submissions.txt"
+student, assignment, submission status
+lee, Shell Navigation, not submitted
+Chad, Git, submitted
+Dave, Shell Navigation, not submitted
+Anny, Shell Basics, submitted
+Tom, Shell Navigation, not submitted
+Kevine, Shell Navigation, not submitted
+Darcy, Shell Navigation, not submitted
+Woodstone, Shell Navigation, not submitted
+Fallguy, Shell Navigation, submitted
+Chinemerem, Shell Navigation, not submitted
+Chiagoziem, Git, submitted
+Divin, Shell Navigation, not submitted
+Aurther, Shell Basics, submitted
+Tesy, Shell Navigation, not submitted
+Kevin, Shell Navigation, not submitted
+Darcy, Shell Navigation, not submitted
+Sarah, Shell Navigation, not submitted
+john, Shell Navigation, submitted
+EOF
 
-# Populate reminder.sh
-cat <<EOL > "$b/app/reminder.sh"
-#!/bin/bash
-
-# Source environment variables and helper functions
-source ./config/config.env
-source ./modules/functions.sh
-
-# Path to the submissions file
-submissions_file="./assets/submissions.txt"
-
-# Print remaining time and run the reminder function
-echo "Assignment: $ASSIGNMENT"
-echo "Days remaining to submit: $DAYS_REMAINING days"
-echo "--------------------------------------------"
-
-check_submissions $submissions_file
-EOL
-chmod +x $b/app/reminder.sh
-
-# Populate functions.sh
-cat <<EOL > "$b/modules/functions.sh"
+# Populating functions.sh
+cat << 'EOF' > "$y/modules/functions.sh"
 #!/bin/bash
 
 # Function to read submissions file and output students who have not submitted
@@ -59,34 +72,39 @@ function check_submissions {
         fi
     done < <(tail -n +2 "$submissions_file") # Skip the header
 }
-EOL
-chmod +x $b/modules/functions.sh
+EOF
 
-# Populate submissions.txt with sample records
-cat <<EOL > "assets/submissions.txt"
-student, assignment, submission status
-Chinemerem, Shell Navigation, not submitted
-Chiagoziem, Git, submitted
-Divine, Shell Navigation, not submitted
-Anissa, Shell Basics, submitted
-John, Shell Navigation, not submitted
-Jack, Git, submitted
-David, Shell Navigation, not submitted
-Aurther, Shell Basics, submitted
-Mary, Shell Navigation, not submitted
-Chia, Git, submitted
-kevin, Shell Navigation, not submitted
-Lee, Shell Basics, submitted
-EOL
-chmod +x $b/assets/submissions.txt
+# Populating reminder.sh
+cat << 'EOF' > "$y/app/reminder.sh"
+#!/bin/bash
+#!/bin/bash
+echo '------------STARTING UP THE APP-------------'
+# Source environment
+source ./config/config.env
+source ./modules/functions.sh
 
-# Create the startup.sh script
-cat <<EOL > "startup.sh"
-echo "Starting up the App"
-echo "-------------------------------------------------------"
+# Location of the submissions file
+submissions_file="./assets/submissions.txt"
+
+# Print out the output for Assignment and Days remaining 
+echo "Assignment: $ASSIGNMENT"
+echo "Days remaining to submit: $DAYS_REMAINING days"
+echo "--------------------------------------------"
+
+check_submissions $submissions_file
+EOF
+
+# Populating startup.sh with logic to run the app
+cat << 'EOF' > "$y/startup.sh"
+#!/bin/bash
+echo "Starting Submission Reminder App..."
 ./app/reminder.sh
-EOL
+EOF
 
-chmod +x startup.sh
+# Changing the permissions of each Scripts to make them executable
+chmod +x "$y/modules/functions.sh"
+chmod +x "$y/startup.sh"
+chmod +x "$y/app/reminder.sh"
 
 tree
+echo 'DISPLAYING THE TREE STRUCTURE OF THE DIRECTORY'
