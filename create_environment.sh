@@ -77,16 +77,15 @@ EOF
 # Populating reminder.sh
 cat << 'EOF' > "$y/app/reminder.sh"
 #!/bin/bash
-#!/bin/bash
-echo '------------STARTING UP THE APP-------------'
-# Source environment
+
+# Source environment variables and helper functions
 source ./config/config.env
 source ./modules/functions.sh
 
-# Location of the submissions file
+# Path to the submissions file
 submissions_file="./assets/submissions.txt"
 
-# Print out the output for Assignment and Days remaining 
+# Print remaining time and run the reminder function
 echo "Assignment: $ASSIGNMENT"
 echo "Days remaining to submit: $DAYS_REMAINING days"
 echo "--------------------------------------------"
@@ -97,7 +96,7 @@ EOF
 # Populating startup.sh with logic to run the app
 cat << 'EOF' > "$y/startup.sh"
 #!/bin/bash
-echo "Starting Submission Reminder App..."
+echo "--------------------STARTING UP THE APP----------------------"
 ./app/reminder.sh
 EOF
 
